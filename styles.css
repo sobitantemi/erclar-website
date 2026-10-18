@@ -1,0 +1,96 @@
+/* Erclar website. Controlling document: Website Design Brief, 17 Oct 2026.
+   Fonts are self-hosted: place the two font files in /fonts (pending dependency): .woff2 preferred, .ttf accepted.
+   Breakpoint: the brief gives no pixel breakpoint. 900px is an assumption. */
+@font-face{font-family:"Source Serif 4";src:url("fonts/SourceSerif4-Variable.woff2") format("woff2"),url("fonts/SourceSerif4-Variable.ttf") format("truetype");font-weight:200 900;font-display:swap}
+@font-face{font-family:"Inter";src:url("fonts/Inter-Variable.woff2") format("woff2"),url("fonts/Inter-Variable.ttf") format("truetype");font-weight:100 900;font-display:swap}
+
+:root{
+  --white:#FFFFFF;--navy:#131720;--mist:#ECF0F3;--violet:#5C44E8;--line:#DDE1E7;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --margin:24px;--space:64px;--gutter:24px;
+}
+@media(min-width:900px){:root{--margin:48px;--space:112px}}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--navy);font:400 17px/28px var(--sans)}
+@media(min-width:900px){body{font-size:18px;line-height:30px}}
+img{max-width:100%;display:block}
+a{color:var(--violet)}
+:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+.dark :focus-visible,.foot :focus-visible{outline-color:#fff}
+.skip{position:absolute;left:-999px;top:8px;background:var(--navy);color:#fff;padding:12px 16px}
+.skip:focus{left:8px;z-index:10}
+
+/* 1200px content width plus side margins */
+.wrap{max-width:calc(1200px + 2*var(--margin));margin:0 auto;padding:0 var(--margin)}
+.sec{padding:var(--space) 0}
+.mist{background:var(--mist)}
+.dark{background:var(--navy);color:var(--mist)}
+
+h1,h2,h3,.t3{font-family:var(--serif);font-weight:400;margin:0;color:inherit}
+h1{font-size:36px;line-height:44px}
+h2{font-size:28px;line-height:36px}
+h3,.t3{font-size:20px;line-height:28px}
+@media(min-width:900px){h1{font-size:56px;line-height:64px}h2{font-size:36px;line-height:44px}h3,.t3{font-size:22px;line-height:30px}}
+p{margin:0 0 16px;max-width:68ch}
+.eyebrow{font:500 12px/20px var(--sans);letter-spacing:.16em;text-transform:uppercase;margin:0 0 20px}
+@media(min-width:900px){.eyebrow{font-size:13px}}
+.small{font-size:14px;line-height:22px}
+
+/* Buttons: navy fill, white text, Inter Medium 16px, 48px high, 2px radius, violet on hover */
+.btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 24px;border-radius:2px;
+  font:500 16px/1 var(--sans);text-decoration:none;background:var(--navy);color:#fff;border:1px solid var(--navy);
+  transition:background-color .15s,border-color .15s}
+.btn:hover{background:var(--violet);border-color:var(--violet)}
+.btn.alt{background:transparent;color:var(--navy)}
+.btn.alt:hover{border-color:var(--violet);color:var(--violet)}
+
+/* Header */
+.top{background:var(--white);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px;padding-top:16px;padding-bottom:16px}
+.top img{height:36px;width:auto}
+.top nav{display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center}
+.top nav a:not(.btn){color:var(--navy);text-decoration:none;font:500 16px/24px var(--sans);padding:8px 0;transition:color .15s}
+.top nav a:not(.btn):hover{color:var(--violet)}
+@media(max-width:899px){.top nav{order:3;width:100%}}
+
+/* Twelve column grid */
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter)}
+.g12>*{grid-column:span 12}
+@media(min-width:700px){.g12>.t6{grid-column:span 6}}
+@media(min-width:900px){.g12>.d3{grid-column:span 3}.g12>.d4{grid-column:span 4}.g12>.d6{grid-column:span 6}}
+.g12.rows{row-gap:var(--gutter)}
+
+.hero{padding:var(--space) 0}
+.hero h1{max-width:18ch;margin-bottom:28px}
+.hero p{margin-bottom:32px}
+
+.stmt{padding:28px 0 0;border-top:1px solid var(--line)}
+.stmt h2{font-size:inherit}
+.cards{margin-top:48px}
+.card{background:var(--white);border:1px solid var(--line);padding:32px}
+.card .num,.step .num{font:400 40px/1 var(--serif);display:block;margin-bottom:20px}
+.card h3{margin-bottom:12px}
+.card p{margin:0}
+.steps{margin-top:48px}
+.step{padding:28px 0 0;border-top:1px solid var(--line)}
+.step h3{margin-bottom:8px}
+.step p{margin:0}
+.band h2{max-width:20ch;margin-bottom:20px}
+.band p{max-width:56ch;margin:0}
+.note{opacity:.7;margin-top:40px}
+.team{margin:40px 0 0}
+
+.foot{background:var(--navy);color:var(--mist);padding:64px 0 32px}
+.foot img{height:56px;width:auto;margin-bottom:24px}
+.foot nav{display:flex;flex-wrap:wrap;gap:8px 28px;margin-bottom:24px}
+.foot a{color:var(--mist);text-decoration:none;transition:color .15s}
+.foot a:hover{color:#fff;text-decoration:underline}
+.foot p{max-width:none}
+.foot .legal{margin-top:32px}
+
+/* Quiet motion: one fade on load, 300ms. All motion off for reduced-motion visitors. */
+@keyframes fade{from{opacity:0}to{opacity:1}}
+main{animation:fade .3s ease-out both}
+@media(prefers-reduced-motion:reduce){main{animation:none}*{transition:none!important}}
