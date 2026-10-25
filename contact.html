@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contact | Erclar</title>
-<!-- PENDING APPROVAL: page description wording is adapted from the brief. -->
-<meta name="description" content="Request a consultation with Erclar. Tell us which area of the business concerns you.">
+<title>Contact Erclar</title>
+<meta name="description" content="Tell us about a process that slows your business down. We will reply to arrange a conversation.">
 <link rel="icon" type="image/png" href="logos/erclar-symbol-on-light.png">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -16,44 +15,40 @@
   <div class="wrap">
     <a href="index.html"><img src="logos/erclar-logo-on-light.png" alt="Erclar"></a>
     <nav aria-label="Main">
-      <a href="services.html">Services</a>
-      <a href="approach.html">Our approach</a>
+      <a href="transformation.html">Erclar Transformation</a>
+      <a href="how-we-work.html">How we work</a>
       <a href="about.html">About</a>
-      <a href="contact.html" aria-current="page">Contact</a>
-      <a class="btn" href="contact.html">Request a consultation</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </div>
 </header>
 
 <main id="main">
-<section class="phead"><div class="wrap"><h1>Contact</h1></div></section>
-<section class="sec mist" aria-label="Consultation request"><div class="wrap">
-<form id="f" novalidate>
-<div class="field"><label for="name">Full name</label><input id="name" aria-describedby="name-e" name="name" type="text" autocomplete="name" required><p class="err" id="name-e" hidden></p></div>
-<div class="field"><label for="company">Company</label><input id="company" aria-describedby="company-e" name="company" type="text" autocomplete="organization" required><p class="err" id="company-e" hidden></p></div>
-<div class="field"><label for="title">Job title</label><input id="title" aria-describedby="title-e" name="title" type="text" autocomplete="organization-title" required><p class="err" id="title-e" hidden></p></div>
-<div class="field"><label for="email">Work email</label><input id="email" aria-describedby="email-e" name="email" type="email" autocomplete="email" required><p class="err" id="email-e" hidden></p></div>
-<div class="field"><label for="phone">Phone</label><input id="phone" aria-describedby="phone-e" name="phone" type="tel" autocomplete="tel" required><p class="err" id="phone-e" hidden></p></div>
-<div class="field"><label for="area">Area of the business concerned</label><select id="area" aria-describedby="area-e" name="area" required><option>Operations</option><option>Sales</option><option>Finance</option><option>Human resources</option><option>Customer service</option><option>Other</option></select><p class="err" id="area-e" hidden></p></div>
-<div class="field"><label for="message">Message</label><textarea id="message" aria-describedby="message-e" name="message" required></textarea><p class="err" id="message-e" hidden></p></div>
-<!-- PENDING: one line privacy note, wording to be approved. The Privacy page text needs legal review. -->
+<!-- Copy source: "Erclar website copy v1.0, October 2026". -->
+<section class="sec blue" aria-labelledby="h1"><div class="wrap"><h1 id="h1">Tell us where work slows you down.</h1><p>Describe one process in your business that takes too long, costs too much or goes wrong too often. We will reply within [one working day] to arrange a conversation.</p></div></section>
+<section class="sec" aria-label="Contact form"><div class="wrap"><form id="f" novalidate>
+<div class="field"><label for="name">Name</label><input id="name" name="name" type="text" aria-describedby="name-e" autocomplete="name"><p class="err" id="name-e" hidden></p></div>
+<div class="field"><label for="company">Company</label><input id="company" name="company" type="text" aria-describedby="company-e" autocomplete="organization"><p class="err" id="company-e" hidden></p></div>
+<div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" aria-describedby="email-e" autocomplete="email"><p class="err" id="email-e" hidden></p></div>
+<div class="field"><label for="phone">Phone (optional)</label><input id="phone" name="phone" type="tel" aria-describedby="phone-e" autocomplete="tel"><p class="err" id="phone-e" hidden></p></div>
+<div class="field"><label for="process">Which process would you like to improve?</label><textarea id="process" name="process" aria-describedby="process-e"></textarea><p class="err" id="process-e" hidden></p></div>
+<!-- PENDING: the copy document gives no options for this dropdown. -->
+<div class="field"><label for="team">How big is your team?</label><select id="team" name="team" aria-describedby="team-e"><option value="">[Options to be confirmed]</option></select><p class="err" id="team-e" hidden></p></div>
+<!-- PENDING: the brief asks for a one line privacy note; the copy document supplies none. Neutral link only. -->
 <p class="formnote small">How we handle your details is set out on our <a href="privacy.html">Privacy</a> page.</p>
-<button class="btn" type="submit">Request a consultation</button>
+<button class="btn" type="submit">Send</button>
 <p class="notice" id="notice" role="status" hidden></p>
 </form></div></section>
-<section class="sec dark band" aria-labelledby="det"><div class="wrap"><h2 id="det" style="margin-bottom:20px">Contact details</h2>
-<p>[Email to be supplied]</p><p>[Phone to be supplied]</p><p>[Office address, if there is one]</p></div></section>
+<section class="sec mist" aria-labelledby="cd"><div class="wrap"><h2 id="cd">Contact details</h2><!-- PENDING: unresolved placeholders in the copy document. --><p>[Email] | [Phone] | [Location]</p></div></section>
 <script>
 (function(){
- // PENDING: set ENDPOINT to the form service address once the company email is confirmed.
+ // PENDING: set ENDPOINT to the form service address once the receiving email is confirmed.
  var ENDPOINT="";
- document.getElementById("area").selectedIndex=-1;
- var f=document.getElementById("f"),msgs={name:"Please enter your full name.",company:"Please enter your company.",title:"Please enter your job title.",email:"Please enter a valid work email address.",phone:"Please enter your phone number.",area:"Please choose an area of the business.",message:"Please write a short message."};
- function check(){var ok=true,first=null;Object.keys(msgs).forEach(function(k){var el=document.getElementById(k),e=document.getElementById(k+"-e"),v=el.value.trim(),bad=!v||(k==="email"&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v));
-  e.hidden=!bad;e.textContent=bad?msgs[k]:"";el.setAttribute("aria-invalid",bad?"true":"false");if(bad){ok=false;if(!first)first=el}});if(first)first.focus();return ok}
+ var f=document.getElementById("f"),req={name:"Please enter your name.",company:"Please enter your company.",email:"Please enter a valid work email address.",process:"Please tell us which process you would like to improve."};
+ function check(){var ok=true,first=null;Object.keys(req).forEach(function(k){var el=document.getElementById(k),e=document.getElementById(k+"-e"),v=el.value.trim(),bad=!v||(k==="email"&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v));e.hidden=!bad;e.textContent=bad?req[k]:"";el.setAttribute("aria-invalid",bad?"true":"false");if(bad){ok=false;if(!first)first=el}});if(first)first.focus();return ok}
  f.addEventListener("submit",function(ev){ev.preventDefault();var n=document.getElementById("notice");n.hidden=true;if(!check())return;
   if(!ENDPOINT){n.textContent="[The form is not connected yet. Nothing has been sent.]";n.hidden=false;return}
-  fetch(ENDPOINT,{method:"POST",body:new FormData(f),headers:{Accept:"application/json"}}).then(function(r){if(r.ok){location.href="thanks.html"}else{throw 0}}).catch(function(){n.textContent="Your request could not be sent. Please try again.";n.hidden=false})});
+  fetch(ENDPOINT,{method:"POST",body:new FormData(f),headers:{Accept:"application/json"}}).then(function(r){if(r.ok){location.href="thanks.html"}else{throw 0}}).catch(function(){n.textContent="Your message could not be sent. Please try again.";n.hidden=false})});
 })();
 </script>
 </main>
@@ -62,12 +57,15 @@
   <div class="wrap">
     <img src="logos/erclar-logo-with-tagline-on-dark.png" alt="Erclar">
     <nav aria-label="Footer">
-      <a href="services.html">Services</a>
-      <a href="approach.html">Our approach</a>
+      <a href="index.html">Home</a>
+      <a href="transformation.html">Erclar Transformation</a>
+      <a href="how-we-work.html">How we work</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <p class="small">[Contact details to be supplied.]</p>
+    <p>Erclar. Digital Transformation &amp; Automation.</p>
+    <!-- PENDING: contact details are unresolved placeholders in the copy document. -->
+    <p class="small">[Email] | [Phone] | [Location]</p>
     <div class="legal small">
       <a href="privacy.html">Privacy</a> &nbsp;&nbsp; <a href="terms.html">Terms</a>
       <p style="margin-top:12px">&copy; 2026 Erclar</p>
